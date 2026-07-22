@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/goal")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://juventudxtemixco.org/", allowCredentials = "true")
 @RequiredArgsConstructor
 public class GoalController {
 

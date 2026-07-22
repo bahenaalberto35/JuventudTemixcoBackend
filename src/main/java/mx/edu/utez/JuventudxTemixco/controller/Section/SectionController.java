@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/section")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://juventudxtemixco.org/", allowCredentials = "true")
 @RequiredArgsConstructor
 public class SectionController {
 
