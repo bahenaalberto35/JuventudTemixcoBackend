@@ -26,39 +26,31 @@ public class PayPalService {
     // Access Token para obtener el acceso
     public String getAccessToken() {
 
-        String credentials =
-                config.getClientId()
-                        + ":"
-                        + config.getClientSecret();
+        try {
 
-        String encoded =
-                Base64.getEncoder()
-                        .encodeToString(
-                                credentials.getBytes()
-                        );
+            String credentials = config.getClientId() + ":" + config.getClientSecret();
 
-        Map response =
-                webClient.post()
-                        .uri(
-                                config.getBaseUrl()
-                                        + "/v1/oauth2/token"
-                        )
-                        .header(
-                                HttpHeaders.AUTHORIZATION,
-                                "Basic " + encoded
-                        )
-                        .header(
-                                HttpHeaders.CONTENT_TYPE,
-                                MediaType.APPLICATION_FORM_URLENCODED_VALUE
-                        )
-                        .bodyValue("grant_type=client_credentials")
-                        .retrieve()
-                        .bodyToMono(Map.class)
-                        .block();
+            String encoded = Base64.getEncoder()
+                    .encodeToString(credentials.getBytes());
 
-        return response
-                .get("access_token")
-                .toString();
+            Map response = webClient.post()
+                    .uri(config.getBaseUrl() + "/v1/oauth2/token")
+                    .header(HttpHeaders.AUTHORIZATION, "Basic " + encoded)
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                    .bodyValue("grant_type=client_credentials")
+                    .retrieve()
+                    .bodyToMono(Map.class)
+                    .block();
+
+            return response.get("access_token").toString();
+
+        } catch (WebClientResponseException e) {
+
+            System.out.println("STATUS: " + e.getStatusCode());
+            System.out.println("BODY: " + e.getResponseBodyAsString());
+
+            throw e;
+        }
     }
 
     // Crea la orden
