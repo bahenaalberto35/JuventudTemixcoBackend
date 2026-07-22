@@ -20,11 +20,11 @@ public class DonationDTO {
         private String apellidoP;
         @NotBlank (message = "El nombre es obligatorio")
         private String apellidoM;
-        @Email(message = "el correo debe tener un formato válido")
+        @Email(message = "El correo debe tener un formato válido")
         @NotBlank(message = "El correo es obligatorio")
         private String correo;
         @NotNull(message = "El monto es obligatorio")
-        @DecimalMin(value = "1.00", message = "EL monto no debe ser menor a 50")
+        @DecimalMin(value = "50.00", message = "EL monto no debe ser menor a 50")
         private BigDecimal monto;
 
         private String paypalOrderId;
