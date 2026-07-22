@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin({"*"})
+@CrossOrigin({"https://juventudxtemixco.org/"})
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;

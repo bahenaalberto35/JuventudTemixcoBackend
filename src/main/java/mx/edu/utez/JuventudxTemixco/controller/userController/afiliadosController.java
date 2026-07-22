@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/afiliados")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://juventudxtemixco.org/", allowCredentials = "true")
 public class afiliadosController {
 
 
