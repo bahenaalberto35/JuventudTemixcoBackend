@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/beneficiarios")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "https://juventudxtemixco.org/", allowCredentials = "true")
 public class beneficiariosController {
 
     private UserRepository userRepository;

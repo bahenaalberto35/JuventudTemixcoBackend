@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reportes")
-@CrossOrigin(origins = "http://localhost:5173") // Asegura el puerto de tu React
+@CrossOrigin(origins = "https://juventudxtemixco.org/") // Asegura el puerto de tu React
 public class CredencialesController {
 
 
