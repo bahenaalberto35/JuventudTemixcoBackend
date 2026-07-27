@@ -2,6 +2,7 @@ package mx.edu.utez.JuventudxTemixco.service.CredencializacionService;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +22,15 @@ public class Credencialización {
             String nombreReporte,
             Map<String, Object> parametros) throws Exception {
 
+        String ruta= "/credenciales/"+nombreReporte+".jasper";
         InputStream reporteStream = getClass()
-                .getResourceAsStream("/credenciales/" + nombreReporte + ".jrxml");
+                .getResourceAsStream(ruta);
 
-        JasperReport reporte =
-                JasperCompileManager.compileReport(reporteStream);
+        if (reporteStream == null) {
+            throw new RuntimeException("No se encontro la plantilla del Reporte");
+        }
+
+        JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteStream);
 
         try (Connection conexion = dataSource.getConnection()) {
 
