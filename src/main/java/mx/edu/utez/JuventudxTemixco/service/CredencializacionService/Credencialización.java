@@ -22,18 +22,17 @@ public class Credencialización {
             String nombreReporte,
             Map<String, Object> parametros) throws Exception {
 
-        String ruta= "/credenciales/"+nombreReporte+".jasper";
-        InputStream reporteStream = getClass()
-                .getResourceAsStream(ruta);
+        String ruta = "/credenciales/" + nombreReporte + ".jrxml";
+        InputStream reporteStream = getClass().getResourceAsStream(ruta);
 
         if (reporteStream == null) {
             throw new RuntimeException("No se encontro la plantilla del Reporte");
         }
 
-        JasperReport reporte = (JasperReport) JRLoader.loadObject(reporteStream);
+
+        JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
 
         try (Connection conexion = dataSource.getConnection()) {
-
             JasperPrint print = JasperFillManager.fillReport(
                     reporte,
                     parametros,
