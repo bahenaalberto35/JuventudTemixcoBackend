@@ -42,7 +42,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of(
+                "https://juventudxtemixco.org",
+                "https://www.juventudxtemixco.org"
+        ));
         configuration.setAllowedMethods(List.of(
                 HttpMethod.GET.name(),
                 HttpMethod.POST.name(),
@@ -50,11 +53,12 @@ public class SecurityConfig {
                 HttpMethod.PATCH.name(),
                 HttpMethod.DELETE.name(),
                 HttpMethod.OPTIONS.name()));
+
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of(HttpHeaders.AUTHORIZATION));
-
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
+
         UrlBasedCorsConfigurationSource source = new
 
                 UrlBasedCorsConfigurationSource();
@@ -134,7 +138,7 @@ public class SecurityConfig {
 
                         // ALIANZAS ----
                         .requestMatchers(HttpMethod.GET, "/api/Alianza/busquedaAlianza").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "api/Alianza/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/Alianza/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/Alianza/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/Alianza/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/Alianza/**"). hasRole("ADMIN")
