@@ -105,49 +105,49 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 				<staticText>
 					<reportElement positionType="Float" x="127" y="161" width="68" height="16" forecolor="#4A0042" uuid="cd79db1f-99da-4a5d-aad3-433466766887"/>
 					<textElement textAlignment="Left">
-						<font fontName="Arial" size="11" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Teléfono:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement positionType="Float" x="126" y="131" width="68" height="16" forecolor="#4A0042" uuid="c5ae381f-72f1-4f6f-8cb9-7234e234e264"/>
 					<textElement textAlignment="Left">
-						<font fontName="Arial" size="11" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Edad:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement positionType="Float" x="142" y="15" width="118" height="30" forecolor="#4A0042" uuid="038ee583-0a3a-4537-a384-3d0cc9b5f8e0"/>
 					<textElement textAlignment="Center">
-						<font fontName="Arial" size="19" isBold="true"/>
+						<font fontName="SansSerif" size="19" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Voluntariado]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true">
 					<reportElement x="31" y="51" width="230" height="24" forecolor="#4A0042" uuid="6bb35961-0236-4ead-b15f-bb023ed25b17"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="14" isBold="true"/>
+						<font fontName="SansSerif" size="14" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Nombre}+" "+$F{Apellido_Paterno}+" "+$F{Apellido_Materno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement x="171" y="101" width="89" height="16" uuid="a473526b-fb7f-4f88-87e1-1f602dc52143"/>
 					<textElement>
-						<font fontName="Arial"/>
+						<font fontName="SansSerif"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Genero}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement x="181" y="161" width="79" height="16" uuid="82229357-675b-4521-91e0-0eb3a83b3d1f"/>
 					<textElement>
-						<font fontName="Arial"/>
+						<font fontName="SansSerif"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Telefono}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement x="161" y="131" width="100" height="16" uuid="7f4912a5-3c52-4218-89f7-e418eedb8072"/>
 					<textElement>
-						<font fontName="Arial"/>
+						<font fontName="SansSerif"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Edad}]]></textFieldExpression>
 				</textField>
@@ -175,7 +175,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 				<staticText>
 					<reportElement positionType="Float" x="47" y="66" width="196" height="63" forecolor="#4A0042" uuid="215410f8-f257-43fb-aa10-6047a4941c01"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Si desea saber si esta identificación está vigente, favor de ponerse en contacto con la asociación]]></text>
 				</staticText>
