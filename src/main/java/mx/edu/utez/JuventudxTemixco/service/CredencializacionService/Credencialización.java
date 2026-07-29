@@ -27,7 +27,6 @@ public class Credencialización {
             parametros = new HashMap<>();
         }
 
-
         InputStream defaultStream =
                 getClass().getResourceAsStream("/img/default.jpg");
 
@@ -37,70 +36,35 @@ public class Credencialización {
 
         byte[] defaultBytes = defaultStream.readAllBytes();
 
-        parametros.put(
-                "IMAGEN_DEFAULT",
-                defaultBytes
-        );
+        parametros.put("IMAGEN_DEFAULT", defaultBytes);
 
-
-
-        InputStream logoStream =
-                getClass().getResourceAsStream("/img/logo.png");
+        InputStream logoStream = getClass().getResourceAsStream("/img/logo.png");
 
         byte[] logoBytes = logoStream.readAllBytes();
 
-        parametros.put(
-                "LOGO_LOGO",
-                logoBytes
-        );
+        parametros.put("LOGO_LOGO", logoBytes);
 
-        String ruta =
-                "/credenciales/" + nombreReporte + ".jrxml";
+        String ruta = "/credenciales/" + nombreReporte + ".jrxml";
 
+        InputStream reporteStream = getClass().getResourceAsStream(ruta);
 
-        InputStream reporteStream =
-                getClass().getResourceAsStream(ruta);
-
-
-
-        if(reporteStream == null){
-            throw new RuntimeException(
-                    "No existe plantilla: " + ruta
-            );
-        }
-
-
+        if(reporteStream == null){throw new RuntimeException("No existe plantilla: " + ruta);}
 
         try {
-
-
-            JasperReport reporte =
-                    JasperCompileManager.compileReport(reporteStream);
-
-
+            JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
 
             try(Connection conexion = dataSource.getConnection()){
 
-
-                JasperPrint print =
-                        JasperFillManager.fillReport(
+                JasperPrint print = JasperFillManager.fillReport(
                                 reporte,
                                 parametros,
                                 conexion
-                        );
-
-
+                );
                 return JasperExportManager.exportReportToPdf(print);
             }
 
-
         }catch(Exception e){
-
-            System.err.println(
-                    "ERROR GENERANDO REPORTE: "
-                            + e.getMessage()
-            );
-
+            System.err.println("ERROR GENERANDO REPORTE: " + e.getMessage());
             throw e;
         }
 
