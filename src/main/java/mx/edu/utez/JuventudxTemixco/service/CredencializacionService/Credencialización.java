@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -20,13 +21,21 @@ public class Credencialización {
             Map<String, Object> parametros) throws Exception {
 
 
+        if (parametros == null) {
+            parametros = new HashMap<>();
+        }
+
+        InputStream imagenPorDefecto = getClass().getResourceAsStream("/static/images/default.png");
+        if (imagenPorDefecto != null) {
+            parametros.put("IMAGEN_DEFAULT", imagenPorDefecto);
+        }
+
         String ruta = "/credenciales/" + nombreReporte + ".jrxml";
         InputStream reporteStream = getClass().getResourceAsStream(ruta);
 
         if (reporteStream == null) {
             throw new RuntimeException("No se encontró la plantilla .jrxml en la ruta: " + ruta);
         }
-
 
         InputStream logoStream = getClass().getResourceAsStream("/img/logo.png");
         if (logoStream == null) {
@@ -38,7 +47,6 @@ public class Credencialización {
         }
 
         try {
-
             JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
 
             try (Connection conexion = dataSource.getConnection()) {

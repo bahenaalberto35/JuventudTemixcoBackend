@@ -148,7 +148,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
-					<imageExpression><![CDATA[new java.io.ByteArrayInputStream($F{Foto})]]></imageExpression>
+					<imageExpression><![CDATA[$F{foto} != null ? new java.io.ByteArrayInputStream($F{foto}) : $P{IMAGEN_DEFAULT}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="166" y="81" width="79" height="16" uuid="c89b3fed-de45-4410-8b35-5e0cb87ddda0">
