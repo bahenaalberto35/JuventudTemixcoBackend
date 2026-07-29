@@ -80,7 +80,9 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
 	</field>
 	<field name="Foto" class="java.io.InputStream">
-		<property name="com.jaspersoft.studio.field.name" value="Foto"/>
+		<property name="com.jaspersoft.studio.field.name" value="foto"/>
+		<property name="com.jaspersoft.studio.field.label" value="Foto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
 	</field>
 	<background>
 		<band height="15" splitType="Stretch"/>
@@ -138,16 +140,17 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
 				</textField>
 				<image scaleImage="RetainShape" onErrorType="Blank">
-					<reportElement positionType="Float" x="9" y="77" width="111" height="110" forecolor="#FFFFFF" uuid="24b5ae5a-d0bb-44c5-bc11-82e7cd66abe4">
-						<printWhenExpression><![CDATA[$F{Foto} != null && ((byte[])$F{Foto}).length > 0]]></printWhenExpression>
-					</reportElement>
+					<reportElement positionType="Float" x="9" y="77" width="111" height="110" uuid="24b5ae5a-d0bb-44c5-bc11-82e7cd66abe4"/>
+
 					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
+
 					<imageExpression><![CDATA[$F{Foto} != null ? $F{Foto} : $P{IMAGEN_DEFAULT}]]></imageExpression>
+
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="166" y="81" width="79" height="16" uuid="c89b3fed-de45-4410-8b35-5e0cb87ddda0">
