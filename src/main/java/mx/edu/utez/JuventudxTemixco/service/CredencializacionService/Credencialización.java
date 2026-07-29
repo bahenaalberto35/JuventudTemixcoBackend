@@ -39,7 +39,7 @@ public class Credencialización {
 
         parametros.put(
                 "IMAGEN_DEFAULT",
-                new ByteArrayInputStream(defaultBytes)
+                defaultBytes
         );
 
 
@@ -47,17 +47,12 @@ public class Credencialización {
         InputStream logoStream =
                 getClass().getResourceAsStream("/img/logo.png");
 
-        if(logoStream == null){
-            throw new RuntimeException("No existe /img/logo.png");
-        }
-
         byte[] logoBytes = logoStream.readAllBytes();
 
         parametros.put(
                 "LOGO_LOGO",
-                new ByteArrayInputStream(logoBytes)
+                logoBytes
         );
-
 
         String ruta =
                 "/credenciales/" + nombreReporte + ".jrxml";
