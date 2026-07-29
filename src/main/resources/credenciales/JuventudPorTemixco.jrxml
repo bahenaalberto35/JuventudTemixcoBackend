@@ -8,6 +8,7 @@
 	<parameter name="fin" class="java.lang.String"/>
 	<parameter name="idUsuario" class="java.lang.Long"/>
 	<parameter name="LOGO_LOGO" class="java.io.InputStream"/>
+	<parameter name="IMAGEN_DEFAULT" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[SELECT  
     user.nombre AS Nombre,
