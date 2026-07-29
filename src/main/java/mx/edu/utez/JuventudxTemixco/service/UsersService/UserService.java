@@ -238,7 +238,7 @@ public class UserService {
                     dto.setTelefono(user.getTelefono());
                     if (user.getFoto() != null) {
                         String base64String = java.util.Base64.getEncoder().encodeToString(user.getFoto());
-                        dto.setFoto("data:image/jpeg;base64," + base64String);
+                        dto.setFoto(base64String);
                     }
 
 
