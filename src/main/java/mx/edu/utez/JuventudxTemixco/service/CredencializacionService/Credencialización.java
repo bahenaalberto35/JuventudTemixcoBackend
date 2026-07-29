@@ -19,12 +19,14 @@ public class Credencialización {
             String nombreReporte,
             Map<String, Object> parametros) throws Exception {
 
-        String ruta = "/credenciales/" + nombreReporte + ".jrxml";
+
+        String ruta = "/credenciales/" + nombreReporte + ".jasper";
         InputStream reporteStream = getClass().getResourceAsStream(ruta);
 
         if (reporteStream == null) {
-            throw new RuntimeException("No se encontró la plantilla del Reporte en la ruta: " + ruta);
+            throw new RuntimeException("No se encontró el archivo compilado del Reporte en la ruta: " + ruta);
         }
+
 
         InputStream logoStream = getClass().getResourceAsStream("/img/logo.png");
         if (logoStream == null) {
@@ -33,19 +35,22 @@ public class Credencialización {
 
         if (logoStream != null) {
             parametros.put("LOGO_LOGO", logoStream);
-        } else {
-            System.out.println("ADVERTENCIA: No se encontró el logo en /img/logo.png ni en /static/img/logo.png");
         }
 
-        JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
+        try {
 
-        try (Connection conexion = dataSource.getConnection()) {
-            JasperPrint print = JasperFillManager.fillReport(
-                    reporte,
-                    parametros,
-                    conexion);
+            try (Connection conexion = dataSource.getConnection()) {
+                JasperPrint print = JasperFillManager.fillReport(
+                        reporteStream,
+                        parametros,
+                        conexion);
 
-            return JasperExportManager.exportReportToPdf(print);
+                return JasperExportManager.exportReportToPdf(print);
+            }
+        } catch (Exception e) {
+            System.err.println("ERROR CRITICO AL LLENAR JASPER REPORT: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
         }
     }
 }
