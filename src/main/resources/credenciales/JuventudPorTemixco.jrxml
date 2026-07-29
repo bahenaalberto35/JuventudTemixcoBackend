@@ -20,7 +20,7 @@
     municipio.nombre AS Municipio,
     user.colonia AS Colonia,
     user.correo AS Correo,
-    NULL AS Foto
+    user.foto AS Foto
 FROM user
 JOIN municipio ON user.id_municipio = municipio.id
 WHERE 1=1
