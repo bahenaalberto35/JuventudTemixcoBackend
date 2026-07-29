@@ -58,13 +58,8 @@ public class UserService {
         user.setRol(UserType.BENEFICIARIO);
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes =
-                        java.util.Base64.getMimeDecoder()
-                                .decode(datos.getFoto().trim());
-
-                user.setFoto(
-                        convertirImagen(imagenEnBytes)
-                );
+                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
+                user.setFoto(imagenEnBytes);
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
                 user.setFoto(null);
@@ -95,14 +90,7 @@ public class UserService {
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
                 byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                byte[] fotoConvertida = convertirImagen(imagenEnBytes);
-
-
-                if (fotoConvertida != null) {
-                    existente.setFoto(fotoConvertida);
-                } else {
-                    System.err.println("No se pudo convertir la nueva imagen, se conservará la anterior.");
-                }
+                existente.setFoto(imagenEnBytes);
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del beneficiario: " + e.getMessage());
 
@@ -166,13 +154,8 @@ public class UserService {
 
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes =
-                        java.util.Base64.getMimeDecoder()
-                                .decode(datos.getFoto().trim());
-
-                user.setFoto(
-                        convertirImagen(imagenEnBytes)
-                );
+                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
+                user.setFoto(imagenEnBytes);
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
                 user.setFoto(null);
@@ -203,13 +186,7 @@ public class UserService {
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
                 byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                byte[] fotoConvertida = convertirImagen(imagenEnBytes);
-
-                if (fotoConvertida != null) {
-                    existente.setFoto(fotoConvertida);
-                } else {
-                    System.err.println("No se pudo convertir la nueva imagen, se conservará la anterior.");
-                }
+                existente.setFoto(imagenEnBytes);
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del beneficiario: " + e.getMessage());
 
@@ -424,33 +401,6 @@ public class UserService {
         return dto;
     }
 
-    private byte[] convertirImagen(byte[] imagenOriginal) {
-        try {
-
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(imagenOriginal);
-            BufferedImage imagen = ImageIO.read(bais);
-
-            if (imagen == null) {
-                System.err.println("ImageIO no pudo leer el formato de la imagen.");
-                return null;
-            }
-
-            ByteArrayOutputStream salida = new ByteArrayOutputStream();
-
-            boolean resultado = ImageIO.write(imagen, "jpg", salida);
-
-            if (!resultado) {
-                return null;
-            }
-
-            return salida.toByteArray();
-
-        } catch (Exception e) {
-            System.err.println("Error convirtiendo imagen: " + e.getMessage());
-            return null;
-        }
-    }
 
 
 }
