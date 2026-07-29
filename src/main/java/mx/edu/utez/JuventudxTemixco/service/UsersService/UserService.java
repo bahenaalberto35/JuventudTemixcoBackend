@@ -13,6 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -54,8 +58,13 @@ public class UserService {
         user.setRol(UserType.BENEFICIARIO);
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                user.setFoto(imagenEnBytes);
+                byte[] imagenEnBytes =
+                        java.util.Base64.getMimeDecoder()
+                                .decode(datos.getFoto().trim());
+
+                user.setFoto(
+                        convertirImagen(imagenEnBytes)
+                );
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
                 user.setFoto(null);
@@ -85,8 +94,13 @@ public class UserService {
         existente.setTelefono(datos.getTelefono());
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                existente.setFoto(imagenEnBytes);
+                byte[] imagenEnBytes =
+                        java.util.Base64.getMimeDecoder()
+                                .decode(datos.getFoto().trim());
+
+                existente.setFoto(
+                        convertirImagen(imagenEnBytes)
+                );
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
                 existente.setFoto(null);
@@ -150,8 +164,13 @@ public class UserService {
 
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                user.setFoto(imagenEnBytes);
+                byte[] imagenEnBytes =
+                        java.util.Base64.getMimeDecoder()
+                                .decode(datos.getFoto().trim());
+
+                user.setFoto(
+                        convertirImagen(imagenEnBytes)
+                );
             } catch (IllegalArgumentException e) {
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
                 user.setFoto(null);
@@ -182,8 +201,13 @@ public class UserService {
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
 
-                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
-                existente.setFoto(imagenEnBytes);
+                byte[] imagenEnBytes =
+                        java.util.Base64.getMimeDecoder()
+                                .decode(datos.getFoto().trim());
+
+                existente.setFoto(
+                        convertirImagen(imagenEnBytes)
+                );
             } catch (IllegalArgumentException e) {
 
                 System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
@@ -394,6 +418,32 @@ public class UserService {
         }
 
         return dto;
+    }
+
+    private byte[] convertirImagen(byte[] imagenOriginal) {
+
+        try {
+            BufferedImage imagen = ImageIO.read(new ByteArrayInputStream(imagenOriginal));
+
+            if(imagen == null){
+                return null;
+            }
+
+            ByteArrayOutputStream salida = new ByteArrayOutputStream();
+
+            ImageIO.write(
+                    imagen,
+                    "jpg",
+                    salida
+            );
+
+            return salida.toByteArray();
+
+        } catch(Exception e){
+
+            System.err.println("Error convirtiendo imagen: " + e.getMessage());
+            return null;
+        }
     }
 
 
