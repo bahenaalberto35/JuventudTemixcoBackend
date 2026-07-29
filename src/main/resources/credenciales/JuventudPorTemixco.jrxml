@@ -79,7 +79,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 		<property name="com.jaspersoft.studio.field.label" value="correo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
 	</field>
-	<field name="Foto" class="java.sql.Blob">
+	<field name="Foto" class="byte[]">
 		<property name="com.jaspersoft.studio.field.name" value="foto"/>
 		<property name="com.jaspersoft.studio.field.label" value="Foto"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
@@ -149,8 +149,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
 
-					<imageExpression><![CDATA[$F{Foto} != null ? $F{Foto}.getBinaryStream() : $P{IMAGEN_DEFAULT}]]></imageExpression>
-
+					<imageExpression><![CDATA[$F{Foto} != null && $F{Foto}.length > 0 ? new java.io.ByteArrayInputStream($F{Foto}) : $P{IMAGEN_DEFAULT}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="166" y="81" width="79" height="16" uuid="c89b3fed-de45-4410-8b35-5e0cb87ddda0">
