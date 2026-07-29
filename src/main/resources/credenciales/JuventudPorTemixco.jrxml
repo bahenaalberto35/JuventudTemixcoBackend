@@ -147,7 +147,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
-					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
+					<imageExpression><![CDATA[$F{Foto}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="166" y="81" width="79" height="16" uuid="c89b3fed-de45-4410-8b35-5e0cb87ddda0">
@@ -164,7 +164,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 				</staticText>
 				<image evaluationTime="Now">
 					<reportElement positionType="Float" x="10" y="13" width="112" height="37" uuid="2a7bf61c-246a-424b-82e7-6cc71e73867c"/>
-					<imageExpression><![CDATA[$P{IMAGEN_DEFAULT}]]></imageExpression>
+					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="176" y="117" width="88" height="16" uuid="e2e50eb0-a8bd-46c8-be8d-bf2eb5fbc345">
@@ -219,7 +219,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 				</box>
 				<image evaluationTime="Now">
 					<reportElement positionType="Float" x="65" y="134" width="164" height="57" uuid="0dac4153-65f5-4ce4-b330-45f6df61bcb5"/>
-					<imageExpression><![CDATA[$P{IMAGEN_DEFAULT}]]></imageExpression>
+					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement positionType="Float" x="5" y="9" width="260" height="64" forecolor="#4A0042" uuid="ee0fb970-048d-479d-95a2-37c4af3488a1"/>
