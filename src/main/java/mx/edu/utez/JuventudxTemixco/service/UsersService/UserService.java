@@ -94,16 +94,18 @@ public class UserService {
         existente.setTelefono(datos.getTelefono());
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
-                byte[] imagenEnBytes =
-                        java.util.Base64.getMimeDecoder()
-                                .decode(datos.getFoto().trim());
+                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
+                byte[] fotoConvertida = convertirImagen(imagenEnBytes);
 
-                existente.setFoto(
-                        convertirImagen(imagenEnBytes)
-                );
+
+                if (fotoConvertida != null) {
+                    existente.setFoto(fotoConvertida);
+                } else {
+                    System.err.println("No se pudo convertir la nueva imagen, se conservará la anterior.");
+                }
             } catch (IllegalArgumentException e) {
-                System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
-                existente.setFoto(null);
+                System.err.println("Error al decodificar la foto del beneficiario: " + e.getMessage());
+
             }
         }
 
@@ -200,22 +202,22 @@ public class UserService {
 
         if (datos.getFoto() != null && !datos.getFoto().isEmpty()) {
             try {
+                byte[] imagenEnBytes = java.util.Base64.getMimeDecoder().decode(datos.getFoto().trim());
+                byte[] fotoConvertida = convertirImagen(imagenEnBytes);
 
-                byte[] imagenEnBytes =
-                        java.util.Base64.getMimeDecoder()
-                                .decode(datos.getFoto().trim());
-
-                existente.setFoto(
-                        convertirImagen(imagenEnBytes)
-                );
+                if (fotoConvertida != null) {
+                    existente.setFoto(fotoConvertida);
+                } else {
+                    System.err.println("No se pudo convertir la nueva imagen, se conservará la anterior.");
+                }
             } catch (IllegalArgumentException e) {
+                System.err.println("Error al decodificar la foto del beneficiario: " + e.getMessage());
 
-                System.err.println("Error al decodificar la foto del afiliado: " + e.getMessage());
-                existente.setFoto(null);
+
             }
-        }
 
-        return userRepository.save(existente);
+            return userRepository.save(existente);
+        }
     }
 
 
