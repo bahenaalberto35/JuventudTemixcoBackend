@@ -166,7 +166,7 @@ $P{IMAGEN_DEFAULT}
 				</staticText>
 				<image evaluationTime="Now">
 					<reportElement positionType="Float" x="10" y="13" width="112" height="37" uuid="2a7bf61c-246a-424b-82e7-6cc71e73867c"/>
-					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
+					<imageExpression><![CDATA[$P{IMAGEN_DEFAULT}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="176" y="117" width="88" height="16" uuid="e2e50eb0-a8bd-46c8-be8d-bf2eb5fbc345">
@@ -221,7 +221,7 @@ $P{IMAGEN_DEFAULT}
 				</box>
 				<image evaluationTime="Now">
 					<reportElement positionType="Float" x="65" y="134" width="164" height="57" uuid="0dac4153-65f5-4ce4-b330-45f6df61bcb5"/>
-					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
+					<imageExpression><![CDATA[$P{IMAGEN_DEFAULT}]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement positionType="Float" x="5" y="9" width="260" height="64" forecolor="#4A0042" uuid="ee0fb970-048d-479d-95a2-37c4af3488a1"/>
