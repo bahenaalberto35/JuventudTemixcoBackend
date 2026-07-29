@@ -215,9 +215,10 @@ public class UserService {
 
 
             }
+        }
 
             return userRepository.save(existente);
-        }
+
     }
 
 
@@ -306,6 +307,7 @@ public class UserService {
                 buscarApellidoP,
                 buscarApellidoM,
                 UserType.BENEFICIARIO
+
         );
 
         return usuarios.stream()
