@@ -149,7 +149,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
 
-					<imageExpression><![CDATA[$F{Foto} != null ? $F{Foto}.getBinaryStream() : $P{IMAGEN_DEFAULT}]]></imageExpression>
+					<imageExpression><![CDATA[$P{IMAGEN_DEFAULT}]]></imageExpression>
 
 				</image>
 				<textField>
