@@ -148,8 +148,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
 					</box>
-
-					<imageExpression><![CDATA[$F{Foto} instanceof byte[] ? ($F{Foto} != null && ((byte[])$F{Foto}).length > 0 ? new java.io.ByteArrayInputStream((byte[])$F{Foto}) : $P{IMAGEN_DEFAULT}) : ($F{Foto} instanceof java.sql.Blob ? new java.io.ByteArrayInputStream(((java.sql.Blob)$F{Foto}).getBytes(1, (int)((java.sql.Blob)$F{Foto}).length())) : $P{IMAGEN_DEFAULT})]]></imageExpression>
+					<imageExpression><![CDATA[$F{Foto} != null && (($F{Foto} instanceof byte[] && ((byte[])$F{Foto}).length > 0) || ($F{Foto} instanceof java.sql.Blob && ((java.sql.Blob)$F{Foto}).length() > 0)) ? ($F{Foto} instanceof byte[] ? new java.io.ByteArrayInputStream((byte[])$F{Foto}) : new java.io.ByteArrayInputStream(((java.sql.Blob)$F{Foto}).getBytes(1, (int)((java.sql.Blob)$F{Foto}).length()))) : $P{IMAGEN_DEFAULT}]]></imageExpression>
 				</image>
 				<textField>
 					<reportElement positionType="Float" x="166" y="81" width="79" height="16" uuid="c89b3fed-de45-4410-8b35-5e0cb87ddda0">
