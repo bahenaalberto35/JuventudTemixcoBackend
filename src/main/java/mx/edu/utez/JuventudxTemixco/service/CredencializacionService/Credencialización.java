@@ -1,8 +1,7 @@
 package mx.edu.utez.JuventudxTemixco.service.CredencializacionService;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRLoader;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +28,10 @@ public class Credencialización {
             throw new RuntimeException("No se encontro la plantilla del Reporte");
         }
 
+        InputStream logoStream = getClass().getResourceAsStream("/img/logo.png");
+        if (logoStream != null) {
+            parametros.put("LOGO_LOGO", logoStream);
+        }
 
         JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
 
