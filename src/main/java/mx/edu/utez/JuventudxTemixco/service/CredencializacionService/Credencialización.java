@@ -20,11 +20,11 @@ public class Credencialización {
             Map<String, Object> parametros) throws Exception {
 
 
-        String ruta = "/credenciales/" + nombreReporte + ".jasper";
+        String ruta = "/credenciales/" + nombreReporte + ".jrxml";
         InputStream reporteStream = getClass().getResourceAsStream(ruta);
 
         if (reporteStream == null) {
-            throw new RuntimeException("No se encontró el archivo compilado del Reporte en la ruta: " + ruta);
+            throw new RuntimeException("No se encontró la plantilla .jrxml en la ruta: " + ruta);
         }
 
 
@@ -39,16 +39,18 @@ public class Credencialización {
 
         try {
 
+            JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
+
             try (Connection conexion = dataSource.getConnection()) {
                 JasperPrint print = JasperFillManager.fillReport(
-                        reporteStream,
+                        reporte,
                         parametros,
                         conexion);
 
                 return JasperExportManager.exportReportToPdf(print);
             }
         } catch (Exception e) {
-            System.err.println("ERROR CRITICO AL LLENAR JASPER REPORT: " + e.getMessage());
+            System.err.println("ERROR CRITICO AL GENERAR JASPER REPORT: " + e.getMessage());
             e.printStackTrace();
             throw e;
         }
