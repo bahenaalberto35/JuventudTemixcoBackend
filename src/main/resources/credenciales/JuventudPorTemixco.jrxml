@@ -20,7 +20,7 @@
     municipio.nombre AS Municipio,
     user.colonia AS Colonia,
     user.correo AS Correo,
-    CAST(user.foto AS BINARY) AS Foto
+    user.foto AS Foto
 FROM user
 JOIN municipio ON user.id_municipio = municipio.id
 WHERE 1=1
@@ -79,7 +79,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 		<property name="com.jaspersoft.studio.field.label" value="correo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
 	</field>
-	<field name="Foto" class="java.io.InputStream">
+	<field name="Foto" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="foto"/>
 		<property name="com.jaspersoft.studio.field.label" value="Foto"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>

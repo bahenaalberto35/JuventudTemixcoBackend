@@ -25,7 +25,7 @@ public class Credencialización {
             parametros = new HashMap<>();
         }
 
-        InputStream imagenPorDefecto = getClass().getResourceAsStream("/static/images/default.png");
+        InputStream imagenPorDefecto = getClass().getResourceAsStream("/imag/default.png");
         if (imagenPorDefecto != null) {
             parametros.put("IMAGEN_DEFAULT", imagenPorDefecto);
         }
@@ -39,7 +39,7 @@ public class Credencialización {
 
         InputStream logoStream = getClass().getResourceAsStream("/img/logo.png");
         if (logoStream == null) {
-            logoStream = getClass().getResourceAsStream("/static/img/logo.png");
+            logoStream = getClass().getResourceAsStream("/img/logo.png");
         }
 
         if (logoStream != null) {
