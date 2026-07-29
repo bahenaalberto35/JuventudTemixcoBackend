@@ -421,31 +421,32 @@ public class UserService {
     }
 
     private byte[] convertirImagen(byte[] imagenOriginal) {
-
         try {
-            BufferedImage imagen = ImageIO.read(new ByteArrayInputStream(imagenOriginal));
 
-            if(imagen == null){
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(imagenOriginal);
+            BufferedImage imagen = ImageIO.read(bais);
+
+            if (imagen == null) {
+                System.err.println("ImageIO no pudo leer el formato de la imagen.");
                 return null;
             }
 
             ByteArrayOutputStream salida = new ByteArrayOutputStream();
 
-            ImageIO.write(
-                    imagen,
-                    "jpg",
-                    salida
-            );
+            boolean resultado = ImageIO.write(imagen, "jpg", salida);
+
+            if (!resultado) {
+                return null;
+            }
 
             return salida.toByteArray();
 
-        } catch(Exception e){
-
+        } catch (Exception e) {
             System.err.println("Error convirtiendo imagen: " + e.getMessage());
             return null;
         }
     }
-
 
 }
 
