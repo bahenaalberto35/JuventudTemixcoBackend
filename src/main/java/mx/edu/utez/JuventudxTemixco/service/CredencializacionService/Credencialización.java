@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -27,32 +28,35 @@ public class Credencialización {
         }
 
 
-        // Imagen por defecto
         InputStream defaultStream =
                 getClass().getResourceAsStream("/img/default.jpg");
-
 
         if(defaultStream == null){
             throw new RuntimeException("No existe /img/default.jpg");
         }
 
+        byte[] defaultBytes = defaultStream.readAllBytes();
 
-        parametros.put("IMAGEN_DEFAULT", defaultStream);
+        parametros.put(
+                "IMAGEN_DEFAULT",
+                new ByteArrayInputStream(defaultBytes)
+        );
 
 
 
-        // Logo
         InputStream logoStream =
                 getClass().getResourceAsStream("/img/logo.png");
-
 
         if(logoStream == null){
             throw new RuntimeException("No existe /img/logo.png");
         }
 
+        byte[] logoBytes = logoStream.readAllBytes();
 
-        parametros.put("LOGO_LOGO", logoStream);
-
+        parametros.put(
+                "LOGO_LOGO",
+                new ByteArrayInputStream(logoBytes)
+        );
 
 
         String ruta =
