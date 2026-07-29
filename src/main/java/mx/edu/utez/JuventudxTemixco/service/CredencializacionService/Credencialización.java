@@ -25,7 +25,7 @@ public class Credencialización {
             parametros = new HashMap<>();
         }
 
-        InputStream imagenPorDefecto = getClass().getResourceAsStream("/imag/default.png");
+        InputStream imagenPorDefecto = getClass().getResourceAsStream("/img/default.png");
         if (imagenPorDefecto != null) {
             parametros.put("IMAGEN_DEFAULT", imagenPorDefecto);
         }
@@ -46,6 +46,8 @@ public class Credencialización {
             parametros.put("LOGO_LOGO", logoStream);
         }
 
+        System.out.println("LOGO STREAM: " + logoStream);
+        System.out.println("DEFAULT STREAM: " + imagenPorDefecto);
         try {
             JasperReport reporte = JasperCompileManager.compileReport(reporteStream);
 
