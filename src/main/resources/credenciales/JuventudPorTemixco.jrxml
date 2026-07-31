@@ -194,7 +194,7 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					<text><![CDATA[Edad:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="90" y="15" width="160" height="30" forecolor="#4A0042" uuid="c4d33bc8-b822-4f1c-b9c8-e4f9db06cda6"/>
+					<reportElement positionType="Float" x="70" y="15" width="180" height="30" forecolor="#4A0042" uuid="c4d33bc8-b822-4f1c-b9c8-e4f9db06cda6"/>
 					<textElement textAlignment="Center">
 						<font fontName="SansSerif" size="19" isBold="true"/>
 					</textElement>
