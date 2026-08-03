@@ -24,14 +24,23 @@ public class AdminController {
 
 
     @GetMapping
-    public List<AdministradorDTO> Administradores() { //
-
-        return adminService.listarAdministradores();
+    public List<AdministradorDTO> Administradores() {
+        try {
+            return adminService.listarAdministradores();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
-    @PostMapping//
+    @PostMapping
     public BeanUser createUser(@Valid @RequestBody AdministradorDTO datos) {
-        return adminService.createUserAdmin(datos);
+        try {
+            return adminService.createUserAdmin(datos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @PutMapping("/{id}") //
