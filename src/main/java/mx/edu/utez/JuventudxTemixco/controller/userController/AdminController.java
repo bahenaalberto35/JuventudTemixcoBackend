@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("https://juventudxtemixco.org/")
+@RequestMapping("/api/admin")
+@CrossOrigin({"https://juventudxtemixco.org/"})
 public class AdminController {
 
     private AdminService adminService;
