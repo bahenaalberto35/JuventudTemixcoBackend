@@ -32,7 +32,7 @@ public class BeanDonation {
     @NotBlank(message = "El correo es obligatorio")
     private String correo;
     @NotNull (message = "El monto es obligatorio")
-    @DecimalMin(value = "1.00", message = "EL monto no debe ser menor a 50")
+    @DecimalMin(value = "50.00", message = "EL monto no debe ser menor a 50")
     private BigDecimal monto;
 
     @Enumerated(EnumType.STRING)
