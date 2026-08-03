@@ -117,7 +117,7 @@ public class AdminService {
                     dto.setApellidoP(user.getApellidoP());
                     dto.setApellidoM(user.getApellidoM());
                     dto.setCorreo(user.getCorreo());
-                    dto.setContrasena(user.getContrasena());
+
 
 
                     return dto;
