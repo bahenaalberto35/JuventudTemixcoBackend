@@ -101,10 +101,13 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#750559"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#750559"/>
 				</box>
-				<textField>
-					<reportElement positionType="Float" x="181" y="135" width="78" height="16" uuid="4852fa3a-adac-4d53-8f1f-e0adca2c60af">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9bc7951-6cd1-4406-a289-6b08402952ad"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="123" y="135" width="68" height="16" uuid="5cfebeb3-4096-47a3-b9b3-55de9d7d3204">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d9e77fb-b3ad-4887-97b5-9a7bba96adb2"/>
 					</reportElement>
+					<textElement>
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{Municipio}]]></textFieldExpression>
 				</textField>
 				<staticText>
