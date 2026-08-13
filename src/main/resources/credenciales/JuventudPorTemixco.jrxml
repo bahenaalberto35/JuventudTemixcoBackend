@@ -172,13 +172,15 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					</reportElement>
 					<textFieldExpression><![CDATA[$F{Telefono}]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement positionType="Float" x="123" y="153" width="68" height="16" forecolor="#4A0042" uuid="91c83dae-3a01-43e2-99e6-c9a2f8282f01"/>
-					<textElement textAlignment="Left">
-						<font fontName="SansSerif" size="11" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Colonia:]]></text>
-				</staticText>
+					<textField isStretchWithOverflow="true">
+						<reportElement positionType="Float" x="170" y="153" width="91" height="16" uuid="5cfebeb3-4096-47a3-b9b3-55de9d7d3204">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d9e77fb-b3ad-4887-97b5-9a7bba96adb2"/>
+						</reportElement>
+						<textElement>
+							<font fontName="SansSerif" size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{Colonia}]]></textFieldExpression>
+					</textField>
 				<staticText>
 					<reportElement positionType="Float" x="123" y="117" width="68" height="16" forecolor="#4A0042" uuid="a7fd7cf1-fa57-4acf-bce4-ea45476a0bb8"/>
 					<textElement textAlignment="Left">
@@ -221,13 +223,13 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					<reportElement positionType="Float" x="65" y="134" width="164" height="57" uuid="0dac4153-65f5-4ce4-b330-45f6df61bcb5"/>
 					<imageExpression><![CDATA[$P{LOGO_LOGO}]]></imageExpression>
 				</image>
-				<staticText>
-					<reportElement positionType="Float" x="5" y="9" width="260" height="64" forecolor="#4A0042" uuid="ee0fb970-048d-479d-95a2-37c4af3488a1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="8" y="9" width="254" height="100" forecolor="#4A0042" uuid="ee0fb970-048d-479d-95a2-37c4af3488a1"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="11" isBold="true"/>
+						<font fontName="SansSerif" size="9.5" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Esta credencial es personal , instranferible  y propiedad de la asociación civil juventud por temixco uso exclusivo para ser beneficiario de los distintos programas. No tendrá validez para ningun otro uso.]]></text>
-				</staticText>
+					<textFieldExpression><![CDATA["Esta credencial es personal, intransferible y propiedad de la asociación civil juventud por temixco uso exclusivo para ser beneficiario de los distintos programas. No tendrá validez para ningun otro uso."]]></textFieldExpression>
+				</textField>
 				<line>
 					<reportElement x="24" y="123" width="226" height="1" forecolor="#4A0042" uuid="da8d4a02-3fba-4ee7-b495-5d1f3fd9abd1"/>
 					<graphicElement>
