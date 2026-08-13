@@ -114,12 +114,13 @@ AND ($P{fin} IS NULL OR DATE(user.fecha_registro) <= $P{fin})]]>
 					</textElement>
 					<text><![CDATA[Correo:]]></text>
 				</staticText>
-				<textField>
-					<reportElement positionType="Float" x="170" y="153" width="71" height="16" uuid="5cfebeb3-4096-47a3-b9b3-55de9d7d3204">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d9e77fb-b3ad-4887-97b5-9a7bba96adb2"/>
-					</reportElement>
-					<textFieldExpression><![CDATA[$F{Colonia}]]></textFieldExpression>
-				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="123" y="145" width="68" height="15" forecolor="#4A0042" uuid="91c83dae-3a01-43e2-99e6-c9a2f8282f01"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Colonia:]]></text>
+				</staticText>
 				<staticText>
 					<reportElement positionType="Float" x="123" y="81" width="68" height="16" forecolor="#4A0042" uuid="40c29b88-6245-48a0-bdc3-033b4a002bd1"/>
 					<textElement textAlignment="Left">
