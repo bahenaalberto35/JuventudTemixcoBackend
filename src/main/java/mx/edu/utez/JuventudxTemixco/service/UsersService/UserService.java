@@ -120,10 +120,10 @@ public class UserService {
                     dto.setMunicipio(user.getMunicipio().getNombre());
                     dto.setColonia(user.getColonia());
                     dto.setCorreo(user.getCorreo());
-                   /* if (user.getFoto() != null) {
+                    if (user.getFoto() != null) {
                         String base64String = java.util.Base64.getEncoder().encodeToString(user.getFoto());
                         dto.setFoto(base64String);
-                    }*/
+                    }
 
 
                     return dto;
@@ -371,11 +371,11 @@ public class UserService {
         dto.setColonia(user.getColonia());
         dto.setCorreo(user.getCorreo());
 
-       /* if (user.getFoto() != null) {
+       if (user.getFoto() != null) {
             String base64String =
                     java.util.Base64.getEncoder().encodeToString(user.getFoto());
             dto.setFoto(base64String);
-        }*/
+        }
 
         return dto;
     }
