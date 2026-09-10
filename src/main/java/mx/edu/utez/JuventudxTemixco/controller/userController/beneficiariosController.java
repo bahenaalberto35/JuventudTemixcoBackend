@@ -88,5 +88,16 @@ public class beneficiariosController {
         return ResponseEntity.ok(usuarios);
     }
 
+    @GetMapping("/{id}/foto")
+    public ResponseEntity<byte[]> obtenerFotoBeneficiario(@PathVariable Long id) {
+        BeanUser user = userRepository.findById(id).orElse(null);
+        if (user != null && user.getFoto() != null) {
+            return ResponseEntity.ok()
+                    .contentType(org.springframework.http.MediaType.IMAGE_JPEG)
+                    .body(user.getFoto());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 
 }
